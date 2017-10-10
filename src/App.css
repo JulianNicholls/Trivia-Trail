@@ -1,11 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #F3E5F5;    /* Purple 50 */
+}
+
 .App {
-  text-align: center;
 }
 
 .App-header {
-  background-color: #880E4F;   /* Pink 900 */
-  padding: 50px 0;
+  background-color: #4A148C;   /* Purple 900 */
   color: white;
+  padding: 50px 0;
+  text-align: center;
 }
 
 .App-title {
@@ -14,4 +22,37 @@
 
 .App-intro {
   font-size: large;
+}
+
+.container {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+}
+
+.question__question {
+  color: black;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.question__answer {
+  background: #8E24AA;    /* Purple 600 */
+  border-radius: 0.6em;
+  color: white;
+  font-size: 1.4em;
+  margin: .6em auto;
+  min-width: 30em;
+  padding: 0.6em;
+  transition: border-radius 300ms ease-in-out, background-color 300ms ease-in-out;
+  width: 50%;
+}
+
+.question__answer:hover {
+  border-radius: 2em;
+  background: #4A148C;   /* Purple 900 */
 }

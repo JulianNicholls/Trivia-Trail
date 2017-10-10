@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import Question             from './components/Question'
+
+const q1 =  {
+  question: "What's the name of Batman's parents?",
+  correct_answer: "Thomas & Martha",
+  incorrect_answers: [
+    "Joey & Jackie",
+    "Jason & Sarah",
+    "Todd & Mira"
+  ]
+};
+
 class App extends Component {
   render() {
     return (
@@ -8,9 +20,10 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Trivia Trail</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="container">
+          <Question {...q1} />
+          
+        </div>
       </div>
     );
   }
