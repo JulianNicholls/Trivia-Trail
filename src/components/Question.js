@@ -13,16 +13,43 @@ import React, { Component }   from 'react';
 //   ]
 // }
 
-const Question = (props) => {
-  return (
-    <div className="question">
-      <h3 className="question__question">{props.question}</h3>
-      <button className="question__answer">{props.correct_answer}</button>
-      {props.incorrect_answers.map((ans) => (
-        <button className="question__answer" key={ans}>{ans}</button>)
-      )}
-    </div>
-  );
+class Question extends Component {
+  // Insert the correct answer randomly into the list of incorrect answers
+  questions() {
+    const { correct_answer: right, incorrect_answers: wrongs } = this.props;
+    const questions = [...wrongs];
+    const index     = Math.floor(Math.random() * wrongs.length);
+
+    questions.splice(index, 0, right);
+
+    return questions;
+  }
+
+  handleClick = (evt) => {
+    if (evt.target.innerText === this.props.correct_answer) {
+      console.log('Correct');
+    }
+    else {
+      console.log('Incorrect');
+    }
+  }
+
+  render() {
+    return (
+      <div className="question">
+        <h3 className="question__question">{this.props.question}</h3>
+        {this.questions().map((ans, idx) => (
+          <button
+            className="question__answer"
+            key={idx}
+            onClick={this.handleClick}
+          >
+            {ans}
+          </button>)
+        )}
+      </div>
+    );
+  }
 };
 
 export default Question;

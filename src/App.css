@@ -12,7 +12,7 @@ body {
 .App-header {
   background-color: #4A148C;   /* Purple 900 */
   color: white;
-  padding: 50px 0;
+  padding: 1.2em 0;
   text-align: center;
 }
 
@@ -27,6 +27,15 @@ body {
 .container {
   max-width: 60rem;
   margin: 0 auto;
+}
+
+input, label, select {
+  font-size: 1.2em;
+}
+
+label {
+  display: inline-block;
+  min-width: 12em;
 }
 
 .question {

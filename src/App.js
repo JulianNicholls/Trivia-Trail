@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Question             from './components/Question'
+import Question             from './components/Question';
+import SelectionPage        from './components/SelectionPage';
 
 const q1 =  {
   category: "General Knowledge",
@@ -35,8 +36,7 @@ class App extends Component {
           <h1 className="App-title">Trivia Trail</h1>
         </header>
         <div className="container">
-          <Question {...q1} />
-
+          <SelectionPage />
         </div>
       </div>
     );
