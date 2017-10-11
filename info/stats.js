@@ -22,7 +22,7 @@ load_categories = async () => {
 }
 
 get_question_count = async (id) => {
-  const raw  = await fetch(`${CATEGORY_QUESTIONS_URL}${id}`);
+  const raw  = await fetch(CATEGORY_QUESTIONS_URL + id);
   const data = await raw.json();
 
   return data;
