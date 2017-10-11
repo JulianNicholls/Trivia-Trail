@@ -1,12 +1,17 @@
 import React, { Component }   from 'react';
 
-// "question": "What&#039;s the name of Batman&#039;s  parents?",
-// "correct_answer": "Thomas &amp; Martha",
-// "incorrect_answers": [
-//   "Joey &amp; Jackie",
-//   "Jason &amp; Sarah",
-//   "Todd &amp; Mira"
-// ]
+// {
+//   category: "General Knowledge",
+//   type: "multiple",
+//   difficulty: "easy",
+//   question: "What's the name of Batman's parents?",
+//   correct_answer: "Thomas & Martha",
+//   incorrect_answers: [
+//     "Joey & Jackie",
+//     "Jason & Sarah",
+//     "Todd & Mira"
+//   ]
+// }
 
 const Question = (props) => {
   return (
