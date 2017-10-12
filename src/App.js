@@ -1,34 +1,57 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Question             from './components/Question';
+import QuestionPage         from './components/QuestionPage';
 import SelectionPage        from './components/SelectionPage';
 
-const q1 =  {
-  category: "General Knowledge",
-  type: "multiple",
-  difficulty: "easy",
-  question: "What's the name of Batman's parents?",
-  correct_answer: "Thomas & Martha",
-  incorrect_answers: [
-    "Joey & Jackie",
-    "Jason & Sarah",
-    "Todd & Mira"
-  ]
-};
-
-const q2 = {
-  category: "Entertainment: Video Games",
-  type: "boolean",
-  difficulty: "hard",
-  question: "In 'The Sims' series, the most members in a household you can have is 8.",
-  correct_answer: "True",
-  incorrect_answers: [
-    "False"
-  ]
-}
+// const q1 =  {
+//   category: "General Knowledge",
+//   type: "multiple",
+//   difficulty: "easy",
+//   question: "What's the name of Batman's parents?",
+//   correct_answer: "Thomas & Martha",
+//   incorrect_answers: [
+//     "Joey & Jackie",
+//     "Jason & Sarah",
+//     "Todd & Mira"
+//   ]
+// };
+//
+// const q2 = {
+//   category: "Entertainment: Video Games",
+//   type: "boolean",
+//   difficulty: "hard",
+//   question: "In 'The Sims' series, the most members in a household you can have is 8.",
+//   correct_answer: "True",
+//   incorrect_answers: [
+//     "False"
+//   ]
+// }
 
 class App extends Component {
+  state = {
+    selected:      false,
+    category:      0,
+    difficulty:    'any',
+    count:         10
+  };
+
+  handleSelect = ({ category, difficulty, count }) => {
+    this.setState(() => ({
+      selected: true,
+      category, difficulty, count
+    }));
+  }
+  
+  page = () => {
+    if (this.state.selected) {
+      return <QuestionPage {...this.state} />;
+    }
+    else {
+      return <SelectionPage handleSelect={this.handleSelect}/>;
+    }
+  };
+
   render() {
     return (
       <div className="App">
@@ -36,7 +59,7 @@ class App extends Component {
           <h1 className="App-title">Trivia Trail</h1>
         </header>
         <div className="container">
-          <SelectionPage />
+          {this.page()}
         </div>
       </div>
     );

@@ -12,7 +12,7 @@ body {
 .App-header {
   background-color: #4A148C;   /* Purple 900 */
   color: white;
-  padding: 1.2em 0;
+  padding: 0.6em 0;
   text-align: center;
 }
 
@@ -29,13 +29,24 @@ body {
   margin: 0 auto;
 }
 
-input, label, select {
+label, input, select {
   font-size: 1.2em;
+
+}
+
+select {
+  min-width: 25em;
 }
 
 label {
   display: inline-block;
   min-width: 12em;
+}
+
+.button {
+  background: #8E24AA;    /* Purple 600 */
+  color: white;
+  font-size: 1.4em;
 }
 
 .question {
@@ -55,7 +66,7 @@ label {
   color: white;
   font-size: 1.4em;
   margin: .6em auto;
-  min-width: 30em;
+  min-width: 20em;
   padding: 0.6em;
   transition: border-radius 300ms ease-in-out, background-color 300ms ease-in-out;
   width: 50%;

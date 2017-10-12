@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 
 const CATEGORIES_URL         = 'https://opentdb.com/api_category.php';
-const CATEGORY_QUESTIONS_URL = 'https://opentdb.com/api_count.php?category='
+const CATEGORY_QUESTIONS_URL = 'https://opentdb.com/api_count.php?category=';
 
 let categories = [];
 
