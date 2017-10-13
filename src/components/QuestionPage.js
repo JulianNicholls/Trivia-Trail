@@ -1,6 +1,8 @@
 import React, { Component }     from 'react';
 
-const QUESTIONS_URL = 'https://opentdb.com/api.php?';
+import Question                 from './Question';
+
+const QUESTIONS_URL = 'https://opentdb.com/api.php';
 
 class QuestionPage extends Component {
   state = {
@@ -11,11 +13,12 @@ class QuestionPage extends Component {
 
   async componentWillMount() {
     const { category, difficulty, count } = this.props;
-    const amountStr     = `amount=${count}`;
+
+    const baseURL       = QUESTIONS_URL + `?amount=${count}`;
     const categoryStr   = (category   !== '0')   ? `&category=${category}` : '';
     const difficultyStr = (difficulty !== 'any') ? `&difficulty=${difficulty}` : '';
 
-    const questionsURL  = QUESTIONS_URL + amountStr + categoryStr + difficultyStr;
+    const questionsURL  = baseURL + categoryStr + difficultyStr;
 
     const raw           = await fetch(questionsURL);
     const data          = await raw.json();
@@ -24,16 +27,34 @@ class QuestionPage extends Component {
 
     data.results.forEach((question) => questions.push(question));
 
-    this.setState(() => ({ questions }))
+    this.setState(() => ({ questions }));
+  }
+
+  header() {
+    const { index, questions, correct } = this.state;
+
+    return (
+      <div className="questions__header">
+        <span className="questions__header__index">Question {index + 1} of {questions.length}</span>
+        {index > 0 && <span className="questions__header__index">{correct} / {questions.length} correct</span>}
+      </div>
+    );
+  }
+
+  receiveAnswer = (was_correct) => {
+    this.setState((prevState) => ({
+      index: prevState.index + 1,
+      correct: was_correct ? prevState.correct + 1 : prevState.correct
+    }));
   }
 
   render() {
     return (
-      <div>
-        <p>amount: {this.props.count}</p>
-        <p>category: {this.props.category}</p>
-        <p>difficulty: {this.props.difficulty}</p>
-        <p>questions: {this.state.questions.length}</p>
+      <div className="questions">
+        {this.header()}
+        <div className="container">
+          {this.state.questions.length > 0 && <Question {...this.state.questions[this.state.index]} sendAnswer={this.receiveAnswer} />}
+        </div>
       </div>
     );
   }
