@@ -4,6 +4,7 @@
 
 body {
   background: #F3E5F5;    /* Purple 50 */
+  padding: 0;
 }
 
 .App {
@@ -12,26 +13,22 @@ body {
 .App-header {
   background-color: #4A148C;   /* Purple 900 */
   color: white;
-  padding: 0.6em 0;
+  padding: 1.2em 0;
   text-align: center;
 }
 
-.App-title {
+.App-header__title {
   font-size: 2.4em;
-}
-
-.App-intro {
-  font-size: large;
+  margin: 0
 }
 
 .container {
-  max-width: 60rem;
+  max-width: 50rem;
   margin: 0 auto;
 }
 
 label, input, select {
   font-size: 1.2em;
-
 }
 
 select {
@@ -47,6 +44,16 @@ label {
   background: #8E24AA;    /* Purple 600 */
   color: white;
   font-size: 1.4em;
+}
+
+.questions__header {
+  background-color: #4A148C;   /* Purple 900 */
+  color: white;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.2em;
+  justify-content: space-between;
+  padding: 0.6em 0.6em;
 }
 
 .question {

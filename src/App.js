@@ -42,7 +42,7 @@ class App extends Component {
       category, difficulty, count
     }));
   }
-  
+
   page = () => {
     if (this.state.selected) {
       return <QuestionPage {...this.state} />;
@@ -56,11 +56,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Trivia Trail</h1>
+          <h1 className="App-header__title">Trivia Trail</h1>
         </header>
-        <div className="container">
-          {this.page()}
-        </div>
+        {this.page()}
       </div>
     );
   }
