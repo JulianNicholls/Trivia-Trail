@@ -44,33 +44,37 @@ class SelectionPage extends Component {
     this.setState(() => ({ count }));
   }
 
-  handleGo = () => {
+  handleGo = (evt) => {
+    evt.preventDefault();
+
     this.props.handleSelect(this.state);
   }
 
   render() {
     return (
-      <form className="selection-form">
-        <label htmlFor="category">Category</label>
-        <select id="category" value={this.state.category} onChange={this.handleCategory}>
-          {this.state.categories.map(({ id, name }, idx) => (
-            <option key={idx} value={id}>{name}</option>
-          ))}
-        </select><br />
+      <div className="container">
+        <form className="selection-form" onSubmit={this.handleGo}>
+          <label htmlFor="category">Category</label>
+          <select id="category" value={this.state.category} onChange={this.handleCategory}>
+            {this.state.categories.map(({ id, name }, idx) => (
+              <option key={idx} value={id}>{name}</option>
+            ))}
+          </select><br />
 
-        <label htmlFor="difficulty">Difficulty</label>
-        <select id="difficulty" value={this.state.difficulty} onChange={this.handleDifficulty}>
-          <option value="any">Any Difficulty</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select><br />
+          <label htmlFor="difficulty">Difficulty</label>
+          <select id="difficulty" value={this.state.difficulty} onChange={this.handleDifficulty}>
+            <option value="any">Any Difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select><br />
 
-        <label htmlFor="count">Number of Questions</label>
-        <input type="number" value={this.state.count} onChange={this.onCountChanged} /><br />
+          <label htmlFor="count">Number of Questions</label>
+          <input type="number" value={this.state.count} onChange={this.onCountChanged} /><br />
 
-        <button className="button" type="submit" onClick={this.handleGo}>GO!</button>
-      </form>
+          <button className="button" type="submit">GO!</button>
+        </form>
+      </div>
     );
   }
 };
