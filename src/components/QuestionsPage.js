@@ -1,6 +1,7 @@
 import React, { Component }     from 'react';
 
 import Question                 from './Question';
+import ResultsSummary           from './ResultsSummary';
 
 const QUESTIONS_URL = 'https://opentdb.com/api.php';
 
@@ -42,15 +43,33 @@ class QuestionsPage extends Component {
     );
   }
 
-  receiveAnswer = (answer) => {
+  receiveAnswer = (text) => {
     this.setState((prevState) => {
       const { questions, index, answers } = prevState;
 
       return {
         index:   index + 1,
-        answers: [...answers, { correct: answer === questions[index].correct_answer, answer }]
+        answers: [...answers, { correct: text === questions[index].correct_answer, text }]
       };
     });
+  }
+
+  page() {
+    const { questions, index, answers } = this.state;
+
+    if (questions.length === 0)
+      return;
+
+    if (index < questions.length) {
+      return (
+        <Question
+          {...this.state.questions[this.state.index]}
+          sendAnswer={this.receiveAnswer}
+        />
+      );
+    }
+
+    return <ResultsSummary questions={questions} answers={answers} />;
   }
 
   render() {
@@ -58,12 +77,7 @@ class QuestionsPage extends Component {
       <div className="questions">
         {this.header()}
         <div className="container">
-          {this.state.questions.length > 0 &&
-            <Question
-              {...this.state.questions[this.state.index]}
-              sendAnswer={this.receiveAnswer}
-            />
-          }
+          {this.page()}
         </div>
       </div>
     );
