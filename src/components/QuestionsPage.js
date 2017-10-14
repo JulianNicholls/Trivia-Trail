@@ -4,11 +4,11 @@ import Question                 from './Question';
 
 const QUESTIONS_URL = 'https://opentdb.com/api.php';
 
-class QuestionPage extends Component {
+class QuestionsPage extends Component {
   state = {
     questions: [],
     index:     0,
-    correct:   0
+    answers:   []
   };
 
   async componentWillMount() {
@@ -31,20 +31,21 @@ class QuestionPage extends Component {
   }
 
   header() {
-    const { index, questions, correct } = this.state;
+    const { index, questions, answers } = this.state;
+    const correct = answers.filter(({ correct }) => correct).length;
 
     return (
       <div className="questions__header">
         <span className="questions__header__index">Question {index + 1} of {questions.length}</span>
-        {index > 0 && <span className="questions__header__index">{correct} / {questions.length} correct</span>}
+        {index > 0 && <span className="questions__header__index">{correct} correct</span>}
       </div>
     );
   }
 
   receiveAnswer = (was_correct) => {
     this.setState((prevState) => ({
-      index: prevState.index + 1,
-      correct: was_correct ? prevState.correct + 1 : prevState.correct
+      index:   prevState.index + 1,
+      answers: [...prevState.answers, { correct: was_correct }]
     }));
   }
 
@@ -60,4 +61,4 @@ class QuestionPage extends Component {
   }
 };
 
-export default QuestionPage;
+export default QuestionsPage;

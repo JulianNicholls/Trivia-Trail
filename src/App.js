@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import QuestionPage         from './components/QuestionPage';
+import QuestionsPage        from './components/QuestionsPage';
 import SelectionPage        from './components/SelectionPage';
 
 // const q1 =  {
@@ -45,7 +45,7 @@ class App extends Component {
 
   page = () => {
     if (this.state.selected) {
-      return <QuestionPage {...this.state} />;
+      return <QuestionsPage {...this.state} />;
     }
     else {
       return <SelectionPage handleSelect={this.handleSelect}/>;
