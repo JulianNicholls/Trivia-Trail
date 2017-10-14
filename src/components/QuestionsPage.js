@@ -42,11 +42,15 @@ class QuestionsPage extends Component {
     );
   }
 
-  receiveAnswer = (was_correct) => {
-    this.setState((prevState) => ({
-      index:   prevState.index + 1,
-      answers: [...prevState.answers, { correct: was_correct }]
-    }));
+  receiveAnswer = (answer) => {
+    this.setState((prevState) => {
+      const { questions, index, answers } = prevState;
+
+      return {
+        index:   index + 1,
+        answers: [...answers, { correct: answer === questions[index].correct_answer, answer }]
+      };
+    });
   }
 
   render() {
@@ -54,7 +58,12 @@ class QuestionsPage extends Component {
       <div className="questions">
         {this.header()}
         <div className="container">
-          {this.state.questions.length > 0 && <Question {...this.state.questions[this.state.index]} sendAnswer={this.receiveAnswer} />}
+          {this.state.questions.length > 0 &&
+            <Question
+              {...this.state.questions[this.state.index]}
+              sendAnswer={this.receiveAnswer}
+            />
+          }
         </div>
       </div>
     );
