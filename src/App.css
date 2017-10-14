@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  outline: none;
 }
 
 body {
@@ -82,4 +83,22 @@ label {
 .question__answer:hover {
   border-radius: 2em;
   background: #4A148C;   /* Purple 900 */
+}
+
+.result {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.2em;
+  justify-content: space-between;
+  margin-bottom: 0.6em;
+  padding: 0.6em;
+}
+
+.result__correct-true {
+  background: #43A047;    /* Green 600 */
+}
+
+.result__correct-false {
+  background: #E53935;    /* Red 600 */
 }
