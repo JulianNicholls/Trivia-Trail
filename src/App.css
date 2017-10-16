@@ -85,6 +85,10 @@ label {
   background: #4A148C;   /* Purple 900 */
 }
 
+.results {
+  margin-top: 1.6em;
+}
+
 .result {
   color: white;
   display: flex;

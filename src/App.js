@@ -43,9 +43,13 @@ class App extends Component {
     }));
   }
 
+  reset = () => {
+    this.setState(() => ({ selected: false }));
+  }
+
   page = () => {
     if (this.state.selected) {
-      return <QuestionsPage {...this.state} />;
+      return <QuestionsPage {...this.state} reset={this.reset}/>;
     }
     else {
       return <SelectionPage handleSelect={this.handleSelect}/>;
