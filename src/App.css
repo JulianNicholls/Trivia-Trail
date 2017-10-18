@@ -8,48 +8,16 @@ html {
 body {
   background: #F3E5F5;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   line-height: 1.6;
   padding: 0; }
-
-.App-header {
-  background-color: #4A148C;
-  color: white;
-  padding: 1.2rem 0;
-  text-align: center; }
-
-.App-header__title {
-  font-size: font-size-large;
-  margin: 0; }
-
-.container {
-  max-width: 50rem;
-  margin: 0 auto; }
-
-.selection__title {
-  text-align: center; }
-
-label, input, select {
-  font-size: 1.4rem; }
-
-select {
-  min-width: 25rem; }
-
-label {
-  display: inline-block;
-  min-width: 12rem; }
-
-.button {
-  background: #8E24AA;
-  color: white;
-  font-size: 1.4rem; }
 
 .questions__header {
   background-color: #4A148C;
   color: white;
   display: flex;
   flex-direction: row;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   justify-content: space-between;
   padding: 0.6rem; }
 
@@ -59,14 +27,14 @@ label {
 
 .question__question {
   color: black;
-  font-size: font-size-small;
+  font-size: font-size-medium;
   text-align: center; }
 
 .question__answer {
   background: #8E24AA;
   border-radius: 0.6rem;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   margin: 0.6rem auto;
   min-width: 20rem;
   padding: 0.6rem;
@@ -74,17 +42,17 @@ label {
   width: 50%; }
 
 .question__answer:hover {
-  border-radius: 1.6rem;
+  border-radius: 2.4rem;
   background: #4A148C; }
 
 .results, .selection {
-  margin-top: 1.2rem; }
+  margin-top: 1.6rem; }
 
 .result {
   color: white;
   display: flex;
   flex-direction: row;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   justify-content: space-between;
   margin-bottom: 0.6rem;
   padding: 0.6rem; }
@@ -94,3 +62,42 @@ label {
 
 .result__correct-false {
   background: #B71C1C; }
+
+.App-header {
+  background-color: #4A148C;
+  color: white;
+  padding: 1.6rem 0;
+  text-align: center; }
+
+.App-header__title {
+  font-size: 3.2rem;
+  margin: 0; }
+
+.container {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0; }
+
+.selection__title {
+  text-align: center; }
+
+label, input {
+  font-size: 1.8rem; }
+
+select {
+  font-size: 1.8rem;
+  min-width: 38rem; }
+
+label {
+  display: block; }
+  @media (min-width: 60rem) {
+    label {
+      display: inline-block;
+      min-width: 19rem; } }
+
+.button {
+  background: #8E24AA;
+  color: white;
+  font-size: 3.2rem;
+  padding: 0.6rem 2.4rem;
+  margin-top: 1.6rem; }

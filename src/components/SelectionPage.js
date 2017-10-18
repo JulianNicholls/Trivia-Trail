@@ -13,7 +13,7 @@ class SelectionPage extends Component {
   async componentWillMount() {
     const raw        = await fetch(CATEGORIES_URL);
     const data       = await raw.json();
-    const categories = [{id: 0, name: 'Any Category'}];
+    const categories = [{id: 0, name: 'Something for Everyone'}];
 
     data.trivia_categories.forEach(({id, name }) => {
       categories.push({ id, name });
@@ -55,25 +55,25 @@ class SelectionPage extends Component {
       <div className="container selection">
         <h1 className="selection__title">Select your questions</h1>
         <form className="selection__form" onSubmit={this.handleGo}>
-          <label htmlFor="category">Category</label>
+          <label htmlFor="category">Trivia Category</label>
           <select id="category" value={this.state.category} onChange={this.handleCategory}>
             {this.state.categories.map(({ id, name }, idx) => (
               <option key={idx} value={id}>{name}</option>
             ))}
           </select><br />
 
-          <label htmlFor="difficulty">Difficulty</label>
+        <label htmlFor="difficulty">Question Difficulty</label>
           <select id="difficulty" value={this.state.difficulty} onChange={this.handleDifficulty}>
-            <option value="any">Any Difficulty</option>
+            <option value="any">A Mix</option>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select><br />
 
-          <label htmlFor="count">Number of Questions</label>
+        <label htmlFor="count">How Many Questions</label>
           <input type="number" value={this.state.count} onChange={this.onCountChanged} /><br />
 
-          <button className="button" type="submit">GO!</button>
+          <button className="button" type="submit">Start</button>
         </form>
       </div>
     );

@@ -1,0 +1,21 @@
+.results, .selection {
+  margin-top: $s-size;
+}
+
+.result {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  font-size: $font-size-medium;
+  justify-content: space-between;
+  margin-bottom: $xs-size;
+  padding: $xs-size;
+}
+
+.result__correct-true {
+  background: $correct-color;
+}
+
+.result__correct-false {
+  background: $wrong-colour;
+}
