@@ -1,0 +1,118 @@
+@import "styles/base";
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: $purple-wash;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: $m-size;
+  line-height: 1.6;
+  padding: 0;
+}
+
+.App-header {
+  background-color: $deep-purple;
+  color: white;
+  padding: $s-size 0;
+  text-align: center;
+}
+
+.App-header__title {
+  font-size: font-size-large;
+  margin: 0
+}
+
+.container {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.selection__title {
+  text-align: center;
+}
+
+label, input, select {
+  font-size: $font-size-small;
+}
+
+select {
+  min-width: 25rem;
+}
+
+label {
+  display: inline-block;
+  min-width: 12rem;
+}
+
+.button {
+  background: $mid-purple;
+  color: white;
+  font-size: $font-size-small;
+}
+
+.questions__header {
+  background-color: $deep-purple;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  font-size: $font-size-small;
+  justify-content: space-between;
+  padding: $xs-size;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+}
+
+.question__question {
+  color: black;
+  font-size: font-size-small;
+  text-align: center;
+}
+
+.question__answer {
+  background: $mid-purple;
+  border-radius: $xs-size;
+  color: white;
+  font-size: $font-size-small;
+  margin: $xs-size auto;
+  min-width: 20rem;
+  padding: $xs-size;
+  transition: border-radius 300ms ease-in-out, background-color 300ms ease-in-out;
+  width: 50%;
+}
+
+.question__answer:hover {
+  border-radius: $m-size;
+  background: $deep-purple;
+}
+
+.results, .selection {
+  margin-top: $s-size;
+}
+
+.result {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  font-size: $font-size-small;
+  justify-content: space-between;
+  margin-bottom: $xs-size;
+  padding: $xs-size;
+}
+
+.result__correct-true {
+  background: $correct-color;
+}
+
+.result__correct-false {
+  background: $wrong-colour;
+}

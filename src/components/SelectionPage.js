@@ -52,8 +52,9 @@ class SelectionPage extends Component {
 
   render() {
     return (
-      <div className="container">
-        <form className="selection-form" onSubmit={this.handleGo}>
+      <div className="container selection">
+        <h1 className="selection__title">Select your questions</h1>
+        <form className="selection__form" onSubmit={this.handleGo}>
           <label htmlFor="category">Category</label>
           <select id="category" value={this.state.category} onChange={this.handleCategory}>
             {this.state.categories.map(({ id, name }, idx) => (
