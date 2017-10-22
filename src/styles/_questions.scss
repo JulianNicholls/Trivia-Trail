@@ -26,11 +26,17 @@
   font-size: $font-size-medium;
   margin: $xs-size auto;
   padding: $s-size;
-  transition: border-radius 300ms ease-in-out, background-color 300ms ease-in-out;
-  width: 70%;
+  width: 98%;
+
+  @media (min-width: $desktop-breakpoint) {
+    transition: border-radius 300ms ease-in-out, background-color 300ms ease-in-out;
+    width: 70%;
+  }
 }
 
-.question__answer:hover {
-  border-radius: $m-size;
-  background: $deep-purple;
+@media (min-width: $desktop-breakpoint) {
+  .question__answer:hover {
+    border-radius: $m-size;
+    background: $deep-purple;
+  }
 }

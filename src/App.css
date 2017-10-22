@@ -45,12 +45,16 @@ body {
   font-size: 1.8rem;
   margin: 0.6rem auto;
   padding: 1.6rem;
-  transition: border-radius 300ms ease-in-out, background-color 300ms ease-in-out;
-  width: 70%; }
+  width: 98%; }
+  @media (min-width: 60rem) {
+    .question__answer {
+      transition: border-radius 300ms ease-in-out, background-color 300ms ease-in-out;
+      width: 70%; } }
 
-.question__answer:hover {
-  border-radius: 2.4rem;
-  background: #4A148C; }
+@media (min-width: 60rem) {
+  .question__answer:hover {
+    border-radius: 2.4rem;
+    background: #4A148C; } }
 
 .results, .selection {
   margin-top: 1.6rem; }
