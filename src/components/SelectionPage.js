@@ -73,7 +73,7 @@ class SelectionPage extends Component {
         <label htmlFor="count">How Many Questions</label>
           <input type="number" value={this.state.count} onChange={this.onCountChanged} /><br />
 
-          <button className="button" type="submit">Start</button>
+          <button className="button button--right" type="submit">Start</button>
         </form>
       </div>
     );

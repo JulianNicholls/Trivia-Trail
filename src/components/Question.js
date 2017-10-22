@@ -26,8 +26,6 @@ class Question extends Component {
   }
 
   handleClick = (evt) => {
-//    console.log(evt.target.innerText === this.props.correct_answer ? 'Correct' : 'Incorrect');
-
     this.props.sendAnswer(evt.target.innerText);
   }
 

@@ -20,6 +20,43 @@ body {
     .container {
       max-width: 90rem; } }
 
+.button {
+  background: #8E24AA;
+  color: white;
+  font-size: 3.2rem;
+  padding: 0.6rem 2.4rem;
+  margin-top: 1.6rem; }
+
+.button--right {
+  float: right; }
+
+.selection {
+  margin-top: 1.6rem;
+  background: white;
+  padding: 3.2rem;
+  overflow: auto; }
+
+.selection__title {
+  margin: 0 0 3.2rem 0;
+  text-align: center; }
+
+label, input {
+  font-size: 1.8rem; }
+
+select {
+  font-size: 1.8rem;
+  max-width: 98%; }
+  @media (min-width: 60rem) {
+    select {
+      min-width: 40rem; } }
+
+label {
+  display: block; }
+  @media (min-width: 60rem) {
+    label {
+      display: inline-block;
+      min-width: 22rem; } }
+
 .questions__header {
   background-color: #4A148C;
   color: white;
@@ -56,8 +93,15 @@ body {
     border-radius: 2.4rem;
     background: #4A148C; } }
 
-.results, .selection {
-  margin-top: 1.6rem; }
+.results__header {
+  background-color: #4A148C;
+  color: white;
+  font-size: 3.2rem;
+  padding: 1.6rem; }
+
+.results {
+  margin: 1.6rem 0;
+  overflow: auto; }
 
 .result {
   color: white;
@@ -83,30 +127,3 @@ body {
 .App-header__title {
   font-size: 3.2rem;
   margin: 0; }
-
-.selection__title {
-  text-align: center; }
-
-label, input {
-  font-size: 1.8rem; }
-
-select {
-  font-size: 1.8rem;
-  max-width: 98%; }
-  @media (min-width: 60rem) {
-    select {
-      min-width: 40rem; } }
-
-label {
-  display: block; }
-  @media (min-width: 60rem) {
-    label {
-      display: inline-block;
-      min-width: 22rem; } }
-
-.button {
-  background: #8E24AA;
-  color: white;
-  font-size: 3.2rem;
-  padding: 0.6rem 2.4rem;
-  margin-top: 1.6rem; }

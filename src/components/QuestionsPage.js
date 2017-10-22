@@ -49,7 +49,7 @@ class QuestionsPage extends Component {
     const correct = answers.filter(({ correct }) => correct).length;
 
     return (
-      <div className="questions__header">
+      <div className={index < questions.length ? 'questions__header' : 'results__header'}>
         {index < questions.length && <span className="questions__header__index">Question {index + 1} of {questions.length}</span>}
         {index > 0 && <span className="questions__header__index">{correct} correct</span>}
       </div>

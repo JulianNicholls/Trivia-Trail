@@ -14,7 +14,7 @@ const ResultsSummary = ({ questions, answers, reset }) => {
       {answers.map(({ correct, text }, idx) => (
         <ResultQuestion correct={correct} text={text} question={questions[idx]} key={idx} />
       ))}
-      <button className="button" onClick={reset}>Restart</button>
+      <button className="button button--right" onClick={reset}>Restart</button>
     </div>
   );
 };
