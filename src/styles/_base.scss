@@ -25,3 +25,15 @@ body {
     max-width: 90rem;
   }
 }
+
+.button {
+  background: $mid-purple;
+  color: white;
+  font-size: $font-size-large;
+  padding: $xs-size $m-size;
+  margin-top: $s-size;
+}
+
+.button--right {
+  float: right;
+}

@@ -1,5 +1,13 @@
-.results, .selection {
-  margin-top: $s-size;
+.results__header {
+  background-color: $deep-purple;
+  color: white;
+  font-size: $font-size-large;
+  padding: $s-size;
+}
+
+.results {
+  margin: $s-size 0;
+  overflow: auto;
 }
 
 .result {

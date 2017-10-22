@@ -1,0 +1,33 @@
+.selection {
+  margin-top: $s-size;
+  background: white;
+  padding: $l-size;
+  overflow: auto;
+}
+
+.selection__title {
+  margin: 0 0 $l-size 0;
+  text-align: center;
+}
+
+label, input {
+  font-size: $font-size-medium;
+}
+
+select {
+  font-size: $font-size-medium;
+  max-width: 98%;
+
+  @media (min-width: $desktop-breakpoint) {
+    min-width: 40rem;
+  }
+}
+
+label {
+  display: block;
+
+  @media (min-width: $desktop-breakpoint) {
+    display: inline-block;
+    min-width: 22rem;
+  }
+}
