@@ -9,9 +9,19 @@ html {
 }
 
 body {
-  background: $purple-wash;
+  background: url(styles/questions.jpg);
   font-family: Helvetica, Arial, sans-serif;
   font-size: $font-size-medium;
   line-height: 1.6;
   padding: 0;
+}
+
+.container {
+  max-width: 98%;
+  margin: 0 auto;
+  padding: 0;
+
+  @media (min-width: $desktop-breakpoint) {
+    max-width: 90rem;
+  }
 }

@@ -25,10 +25,9 @@
   color: white;
   font-size: $font-size-medium;
   margin: $xs-size auto;
-  min-width: 20rem;
-  padding: $xs-size;
+  padding: $s-size;
   transition: border-radius 300ms ease-in-out, background-color 300ms ease-in-out;
-  width: 50%;
+  width: 70%;
 }
 
 .question__answer:hover {

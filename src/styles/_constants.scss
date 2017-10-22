@@ -4,8 +4,8 @@ $deep-purple:     #4A148C;   // Purple 900
 $mid-purple:      #8E24AA;   // Purple 600
 $purple-wash:     #F3E5F5;   // Purple 50
 
-$correct-color:   #1B5E20;    // Green 900
-$wrong-colour:    #B71C1C;    // Red 900
+$correct-color:   hsl(124, 55%, 15%);        // #1B5E20;    // Green 900
+$wrong-colour:    hsl(0, 73%, 20%);          // #B71C1C;    // Red 900
 
 
 // Fonts
@@ -22,6 +22,7 @@ $xs-size:    0.6rem;
 $s-size:     1.6rem;
 $m-size:     2.4rem;
 $l-size:     3.2rem;
+
 
 // Desktop vs mobile
 
