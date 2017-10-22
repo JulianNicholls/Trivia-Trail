@@ -6,11 +6,19 @@ html {
   font-size: 62.5%; }
 
 body {
-  background: #F3E5F5;
+  background: url(styles/questions.jpg);
   font-family: Helvetica, Arial, sans-serif;
   font-size: 1.8rem;
   line-height: 1.6;
   padding: 0; }
+
+.container {
+  max-width: 98%;
+  margin: 0 auto;
+  padding: 0; }
+  @media (min-width: 60rem) {
+    .container {
+      max-width: 90rem; } }
 
 .questions__header {
   background-color: #4A148C;
@@ -36,10 +44,9 @@ body {
   color: white;
   font-size: 1.8rem;
   margin: 0.6rem auto;
-  min-width: 20rem;
-  padding: 0.6rem;
+  padding: 1.6rem;
   transition: border-radius 300ms ease-in-out, background-color 300ms ease-in-out;
-  width: 50%; }
+  width: 70%; }
 
 .question__answer:hover {
   border-radius: 2.4rem;
@@ -51,17 +58,17 @@ body {
 .result {
   color: white;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: 1.8rem;
   justify-content: space-between;
   margin-bottom: 0.6rem;
   padding: 0.6rem; }
 
 .result__correct-true {
-  background: #1B5E20; }
+  background: #113b14; }
 
 .result__correct-false {
-  background: #B71C1C; }
+  background: #580e0e; }
 
 .App-header {
   background-color: #4A148C;
@@ -73,11 +80,6 @@ body {
   font-size: 3.2rem;
   margin: 0; }
 
-.container {
-  max-width: 60rem;
-  margin: 0 auto;
-  padding: 0; }
-
 .selection__title {
   text-align: center; }
 
@@ -86,14 +88,17 @@ label, input {
 
 select {
   font-size: 1.8rem;
-  min-width: 38rem; }
+  max-width: 98%; }
+  @media (min-width: 60rem) {
+    select {
+      min-width: 40rem; } }
 
 label {
   display: block; }
   @media (min-width: 60rem) {
     label {
       display: inline-block;
-      min-width: 19rem; } }
+      min-width: 22rem; } }
 
 .button {
   background: #8E24AA;

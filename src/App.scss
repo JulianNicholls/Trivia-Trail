@@ -16,12 +16,6 @@
   margin: 0
 }
 
-.container {
-  max-width: 60rem;
-  margin: 0 auto;
-  padding: 0;
-}
-
 .selection__title {
   text-align: center;
 }
@@ -32,7 +26,11 @@ label, input {
 
 select {
   font-size: $font-size-medium;
-  min-width: 38rem;
+  max-width: 98%;
+
+  @media (min-width: $desktop-breakpoint) {
+    min-width: 40rem;
+  }
 }
 
 label {
@@ -40,7 +38,7 @@ label {
 
   @media (min-width: $desktop-breakpoint) {
     display: inline-block;
-    min-width: 19rem;
+    min-width: 22rem;
   }
 }
 
