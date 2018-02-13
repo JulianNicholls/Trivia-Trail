@@ -6,27 +6,19 @@ const CATEGORY_QUESTIONS_URL = 'https://opentdb.com/api_count.php?category=';
 
 let categories = [];
 
-// load_categories = () => {
-//   fetch(CATEGORIES_URL)
-//     .then(raw => raw.json())
-//     .then(data => {
-//       categories = data;
-//     })
-// }
-
-load_categories = async () => {
+const load_categories = async () => {
   const raw  = await fetch(CATEGORIES_URL);
   const data = await raw.json();
 
   return data;
-}
+};
 
-get_question_count = async (id) => {
+const get_question_count = async (id) => {
   const raw  = await fetch(CATEGORY_QUESTIONS_URL + id);
   const data = await raw.json();
 
   return data;
-}
+};
 
 load_categories().then((data) => {
   data.trivia_categories.forEach((cat) => {
@@ -45,7 +37,7 @@ load_categories().then((data) => {
         name:   cat.name,
         total, easy, medium, hard
       });
-    })
+    });
   });
 });
 
