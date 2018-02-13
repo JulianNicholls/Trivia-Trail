@@ -1,58 +1,35 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import QuestionsPage        from './components/QuestionsPage';
-import SelectionPage        from './components/SelectionPage';
-
-// const q1 =  {
-//   category: "General Knowledge",
-//   type: "multiple",
-//   difficulty: "easy",
-//   question: "What's the name of Batman's parents?",
-//   correct_answer: "Thomas & Martha",
-//   incorrect_answers: [
-//     "Joey & Jackie",
-//     "Jason & Sarah",
-//     "Todd & Mira"
-//   ]
-// };
-//
-// const q2 = {
-//   category: "Entertainment: Video Games",
-//   type: "boolean",
-//   difficulty: "hard",
-//   question: "In 'The Sims' series, the most members in a household you can have is 8.",
-//   correct_answer: "True",
-//   incorrect_answers: [
-//     "False"
-//   ]
-// }
+import QuestionsPage from './components/QuestionsPage';
+import SelectionPage from './components/SelectionPage';
 
 class App extends Component {
   state = {
-    selected:      false,
-    category:      0,
-    difficulty:    'any',
-    count:         10
+    selected: false,
+    category: 0,
+    difficulty: 'any',
+    count: 10
   };
 
   handleSelect = ({ category, difficulty, count }) => {
     this.setState(() => ({
       selected: true,
-      category, difficulty, count
+      category,
+      difficulty,
+      count
     }));
-  }
+  };
 
   reset = () => {
     this.setState(() => ({ selected: false }));
-  }
+  };
 
   page = () => {
     if (this.state.selected) {
-      return <QuestionsPage {...this.state} reset={this.reset}/>;
-    }
-    else {
-      return <SelectionPage handleSelect={this.handleSelect}/>;
+      return <QuestionsPage {...this.state} reset={this.reset} />;
+    } else {
+      return <SelectionPage handleSelect={this.handleSelect} />;
     }
   };
 
