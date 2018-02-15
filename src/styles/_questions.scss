@@ -9,13 +9,15 @@
 }
 
 .question {
+  background: white;
   display: flex;
   flex-direction: column;
+  padding: $s-size 0 $xl-size 0;
 }
 
 .question__question {
   color: black;
-  font-size: font-size-medium;
+  font-size: $font-size-medium;
   text-align: center;
 }
 
@@ -27,16 +29,15 @@
   margin: $xs-size auto;
   padding: $s-size;
   width: 98%;
-
-  @media (min-width: $desktop-breakpoint) {
-    transition: border-radius 300ms ease-in-out, background-color 300ms ease-in-out;
-    width: 70%;
-  }
 }
 
 @media (min-width: $desktop-breakpoint) {
-  .question__answer:hover {
-    border-radius: $m-size;
-    background: $deep-purple;
+  .question__answer {
+    transition: background-color 300ms ease-in-out;
+    width: 70%;
+
+    &:hover {
+      background: $deep-purple;
+    }
   }
 }

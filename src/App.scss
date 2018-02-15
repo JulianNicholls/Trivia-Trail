@@ -1,18 +1,18 @@
-@import "styles/constants";
-@import "styles/base";
+@import 'styles/constants';
+@import 'styles/base';
 
-@import "styles/selection";
-@import "styles/questions";
-@import "styles/results";
+@import 'styles/selection';
+@import 'styles/questions';
+@import 'styles/results';
 
 .App-header {
   background-color: $deep-purple;
   color: white;
-  padding: $s-size 0;
+  padding: $xs-size 0;
   text-align: center;
 }
 
 .App-header__title {
   font-size: $font-size-large;
-  margin: 0
+  margin: 0;
 }
