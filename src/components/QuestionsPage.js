@@ -1,7 +1,7 @@
-import React, { Component }     from 'react';
+import React, { Component } from 'react';
 
-import Question                 from './Question';
-import ResultsSummary           from './ResultsSummary';
+import Question from './Question';
+import ResultsSummary from './ResultsSummary';
 
 const QUESTIONS_URL = 'https://opentdb.com/api.php?encode=url3986';
 
@@ -25,77 +25,81 @@ const PageHeader = ({ index, questions, answers, done }) => {
 
 class QuestionsPage extends Component {
   state = {
-    loading:   true,
+    loading: true,
     questions: [],
-    index:     0,
-    answers:   []
+    index: 0,
+    answers: []
   };
 
   async componentWillMount() {
     const { category, difficulty, count } = this.props;
 
     const baseURL = QUESTIONS_URL + `&amount=${count}`;
-    const categoryStr   = (category   !== '0')   ? `&category=${category}` : '';
-    const difficultyStr = (difficulty !== 'any') ? `&difficulty=${difficulty}` : '';
+    const categoryStr = category !== '0' ? `&category=${category}` : '';
+    const difficultyStr = difficulty !== 'any' ? `&difficulty=${difficulty}` : '';
 
     const questionsURL = baseURL + categoryStr + difficultyStr;
 
     const raw = await fetch(questionsURL);
     const data = await raw.json();
 
-    const questions     = [];
-
-    data.results.forEach((question) => questions.push(this.processed(question)));
+    const questions = data.results.map(this.process);
 
     this.setState(() => ({ loading: false, questions }));
   }
 
-  decodeTrim(text) {
-    return decodeURIComponent(text).trim();
-  }
+  process = question => {
+    const decodeTrim = text => decodeURIComponent(text).trim();
 
-  processed(question) {
-    question.question           = this.decodeTrim(question.question);
-    question.correct_answer     = this.decodeTrim(question.correct_answer);
-    question.incorrect_answers  = question.incorrect_answers.map(text => this.decodeTrim(text));
+    question.question = decodeTrim(question.question);
+    question.correct_answer = decodeTrim(question.correct_answer);
+    question.incorrect_answers = question.incorrect_answers.map(decodeTrim);
 
     return question;
-  }
+  };
 
-
-  receiveAnswer = (text) => {
-    this.setState((prevState) => {
+  receiveAnswer = text => {
+    this.setState(prevState => {
       const { questions, index, answers } = prevState;
 
       return {
         index: index + 1,
-        answers: [...answers, { correct: text === questions[index].correct_answer, text }]
+        answers: [
+          ...answers,
+          { correct: text === questions[index].correct_answer, text }
+        ]
       };
     });
-  }
+  };
+
+  done = () => this.state.index >= this.state.questions.length;
 
   page() {
     const { loading, questions, index, answers } = this.state;
 
-    if (loading)
-      return;
+    if (loading) return;
 
-    if (index < questions.length) {
-      return <Question {...questions[index]} sendAnswer={this.receiveAnswer} />;
+    if (this.done()) {
+      return (
+        <ResultsSummary
+          questions={questions}
+          answers={answers}
+          reset={this.props.reset}
+        />
+      );
     }
 
-    return <ResultsSummary questions={questions} answers={answers} reset={this.props.reset}/>;
+    return <Question {...questions[index]} sendAnswer={this.receiveAnswer} />;
   }
 
   render() {
     return (
       <div className="questions">
-        <div className="container">
-          {this.page()}
-        </div>
+        <PageHeader {...this.state} done={this.done()} />
+        <div className="container">{this.page()}</div>
       </div>
     );
   }
-};
+}
 
 export default QuestionsPage;
