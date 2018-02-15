@@ -5,6 +5,24 @@ import ResultsSummary           from './ResultsSummary';
 
 const QUESTIONS_URL = 'https://opentdb.com/api.php?encode=url3986';
 
+const PageHeader = ({ index, questions, answers, done }) => {
+  const correct = answers.filter(({ correct }) => correct).length;
+  const cname = done ? 'results__header' : 'questions__header';
+
+  return (
+    <div className={cname}>
+      {!done && (
+        <span className="questions__header__index">
+          Question {index + 1} of {questions.length}
+        </span>
+      )}
+      {index > 0 && (
+        <span className="questions__header__index">{correct} correct</span>
+      )}
+    </div>
+  );
+};
+
 class QuestionsPage extends Component {
   state = {
     loading:   true,
@@ -16,14 +34,14 @@ class QuestionsPage extends Component {
   async componentWillMount() {
     const { category, difficulty, count } = this.props;
 
-    const baseURL       = QUESTIONS_URL + `&amount=${count}`;
+    const baseURL = QUESTIONS_URL + `&amount=${count}`;
     const categoryStr   = (category   !== '0')   ? `&category=${category}` : '';
     const difficultyStr = (difficulty !== 'any') ? `&difficulty=${difficulty}` : '';
 
-    const questionsURL  = baseURL + categoryStr + difficultyStr;
+    const questionsURL = baseURL + categoryStr + difficultyStr;
 
-    const raw           = await fetch(questionsURL);
-    const data          = await raw.json();
+    const raw = await fetch(questionsURL);
+    const data = await raw.json();
 
     const questions     = [];
 
@@ -44,24 +62,13 @@ class QuestionsPage extends Component {
     return question;
   }
 
-  header() {
-    const { index, questions, answers } = this.state;
-    const correct = answers.filter(({ correct }) => correct).length;
-
-    return (
-      <div className={index < questions.length ? 'questions__header' : 'results__header'}>
-        {index < questions.length && <span className="questions__header__index">Question {index + 1} of {questions.length}</span>}
-        {index > 0 && <span className="questions__header__index">{correct} correct</span>}
-      </div>
-    );
-  }
 
   receiveAnswer = (text) => {
     this.setState((prevState) => {
       const { questions, index, answers } = prevState;
 
       return {
-        index:   index + 1,
+        index: index + 1,
         answers: [...answers, { correct: text === questions[index].correct_answer, text }]
       };
     });
@@ -83,7 +90,6 @@ class QuestionsPage extends Component {
   render() {
     return (
       <div className="questions">
-        {this.header()}
         <div className="container">
           {this.page()}
         </div>
