@@ -17,6 +17,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "justify-text": "^1.0.0",
     "node-fetch": "^1.7.3"
   }
 }
