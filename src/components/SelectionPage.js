@@ -15,9 +15,16 @@ class SelectionPage extends Component {
     const data = await raw.json();
     const categories = [{ id: 0, name: 'Something for Everyone' }];
 
-    data.trivia_categories.forEach(({ id, name }) => {
-      categories.push({ id, name });
-    });
+    data.trivia_categories
+      .sort((cata, catb) => {
+        if (cata.name < catb.name) return -1;
+        if (cata.name > catb.name) return 1;
+
+        return 0;
+      })
+      .forEach(({ id, name }) => {
+        categories.push({ id, name });
+      });
 
     this.setState(() => ({ categories }));
   }
