@@ -22,10 +22,11 @@ body {
 
 .button {
   background: #8e24aa;
+  border-radius: 8px;
   color: white;
   font-size: 3.2rem;
-  padding: 0.6rem 2.4rem;
-  margin-top: 1.6rem; }
+  margin-top: 1.6rem;
+  padding: 0.6rem 2.4rem; }
 
 .button--right {
   float: right; }
@@ -96,8 +97,10 @@ label {
 .results__header {
   background-color: #4a148c;
   color: white;
-  font-size: 3.2rem;
-  padding: 0 0 0.6rem 0.6rem; }
+  padding: 0 0 0.6rem 1.6rem; }
+  .results__header .count {
+    font-size: 3.2rem;
+    color: #80ff90; }
 
 .results {
   align-items: center;

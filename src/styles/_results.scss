@@ -1,29 +1,48 @@
 .results__header {
   background-color: $deep-purple;
   color: white;
-  font-size: $font-size-large;
-  padding: $s-size;
+  padding: 0 0 $xs-size $s-size;
+
+  .count {
+    font-size: $font-size-large;
+    color: #80ff90;
+  }
 }
 
 .results {
+  align-items: center;
+  background: #f0f0f0;
+  color: #111;
+  display: grid;
+  font-size: $font-size-medium-small;
+  grid-template-columns: 3fr 1fr 1fr;
+  grid-gap: $xs-size;
   margin: $s-size 0;
-  overflow: auto;
+  padding: 10px;
+
+  .button--right {
+    margin-top: $l-size;
+    grid-column: span 1 / -1; /* Saying just -1 adds a column, as it should */
+  }
+
+  .correct {
+    grid-column: span 1 / -1;
+    padding: $xs-size;
+  }
 }
 
-.result {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: $font-size-medium;
-  justify-content: space-between;
-  margin-bottom: $xs-size;
+.result__question {
   padding: $xs-size;
 }
 
 .result__correct-true {
   background: $correct-color;
+  color: #f0f0f0;
+  padding: $xs-size;
 }
 
 .result__correct-false {
   background: $wrong-colour;
+  color: #f0f0f0;
+  padding: $xs-size;
 }

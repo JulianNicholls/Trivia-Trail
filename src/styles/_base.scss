@@ -28,10 +28,11 @@ body {
 
 .button {
   background: $mid-purple;
+  border-radius: 8px;
   color: white;
   font-size: $font-size-large;
-  padding: $xs-size $m-size;
   margin-top: $s-size;
+  padding: $xs-size $m-size;
 }
 
 .button--right {

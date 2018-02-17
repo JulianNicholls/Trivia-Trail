@@ -16,9 +16,7 @@ const PageHeader = ({ index, questions, answers, done }) => {
           Question {index + 1} of {questions.length}
         </span>
       )}
-      {index > 0 && (
-        <span className="questions__header__index">{correct} correct</span>
-      )}
+      {index > 0 && <span className="count">{correct} correct</span>}
     </div>
   );
 };
