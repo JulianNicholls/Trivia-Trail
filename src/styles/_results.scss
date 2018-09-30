@@ -1,18 +1,18 @@
 .results__header {
   background-color: $deep-purple;
-  color: white;
+  color: $light;
   padding: 0 0 $xs-size $s-size;
 
   .count {
+    color: $results-correct;
     font-size: $font-size-large;
-    color: #80ff90;
   }
 }
 
 .results {
   align-items: center;
-  background: #f0f0f0;
-  color: #111;
+  background: $light;
+  color: #222;
   display: grid;
   font-size: $font-size-medium-small;
   grid-template-columns: 3fr 1fr 1fr;
@@ -21,13 +21,17 @@
   padding: 10px;
 
   .button--right {
-    margin-top: $l-size;
     grid-column: span 1 / -1; /* Saying just -1 adds a column, as it should */
+    margin-top: $l-size;
   }
 
   .correct {
     grid-column: span 1 / -1;
     padding: $xs-size;
+  }
+
+  .correct-answer {
+    color: $correct-color;
   }
 }
 
@@ -37,12 +41,12 @@
 
 .result__correct-true {
   background: $correct-color;
-  color: #f0f0f0;
+  color: $light;
   padding: $xs-size;
 }
 
 .result__correct-false {
   background: $wrong-colour;
-  color: #f0f0f0;
+  color: $light;
   padding: $xs-size;
 }

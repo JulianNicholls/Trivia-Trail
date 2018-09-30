@@ -1,6 +1,7 @@
 .selection {
+  background: $light;
+  color: #222;
   margin-top: $s-size;
-  background: white;
   padding: $l-size;
   overflow: auto;
 }

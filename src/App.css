@@ -32,8 +32,9 @@ body {
   float: right; }
 
 .selection {
+  background: #eee;
+  color: #222;
   margin-top: 1.6rem;
-  background: white;
   padding: 3.2rem;
   overflow: auto; }
 
@@ -60,7 +61,7 @@ label {
 
 .questions__header {
   background-color: #4a148c;
-  color: white;
+  color: #eee;
   display: flex;
   flex-direction: row;
   font-size: 1.8rem;
@@ -68,15 +69,17 @@ label {
   padding: 0.6rem; }
 
 .question {
-  background: white;
+  background: #eee;
   display: flex;
   flex-direction: column;
-  padding: 1.6rem 0 4.8rem 0; }
+  margin-top: 1rem;
+  padding: 1.6rem 1rem 4.8rem 1rem; }
 
 .question__question {
-  color: black;
+  color: #222;
   font-size: 1.8rem;
-  text-align: center; }
+  text-align: center;
+  padding: 0 3rem; }
 
 .question__answer {
   background: #8e24aa;
@@ -96,11 +99,11 @@ label {
 
 .results__header {
   background-color: #4a148c;
-  color: white;
+  color: #eee;
   padding: 0 0 0.6rem 1.6rem; }
   .results__header .count {
-    font-size: 3.2rem;
-    color: #80ff90; }
+    color: #70E680;
+    font-size: 3.2rem; }
 
 .results {
   align-items: center;
@@ -113,29 +116,31 @@ label {
   margin: 1.6rem 0;
   padding: 10px; }
   .results .button--right {
-    margin-top: 3.2rem;
     grid-column: span 1 / -1;
-    /* Saying just -1 adds a column, as it should */ }
+    /* Saying just -1 adds a column, as it should */
+    margin-top: 3.2rem; }
   .results .correct {
     grid-column: span 1 / -1;
     padding: 0.6rem; }
+  .results .correct-answer {
+    color: #19862B; }
 
 .result__question {
   padding: 0.6rem; }
 
 .result__correct-true {
-  background: #1d9e32;
-  color: #f0f0f0;
+  background: #19862B;
+  color: #eee;
   padding: 0.6rem; }
 
 .result__correct-false {
   background: #9e1d32;
-  color: #f0f0f0;
+  color: #eee;
   padding: 0.6rem; }
 
 .App-header {
   background-color: #4a148c;
-  color: white;
+  color: #eee;
   padding: 0.6rem 0;
   text-align: center; }
 

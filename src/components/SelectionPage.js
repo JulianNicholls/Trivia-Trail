@@ -10,9 +10,9 @@ class SelectionPage extends Component {
     count: 10
   };
 
-  async componentWillMount() {
-    const raw = await fetch(CATEGORIES_URL);
-    const data = await raw.json();
+  async componentDidMount() {
+    const response = await fetch(CATEGORIES_URL);
+    const data = await response.json();
     const categories = [{ id: 0, name: 'Something for Everyone' }];
 
     data.trivia_categories

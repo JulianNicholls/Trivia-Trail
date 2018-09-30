@@ -1,25 +1,10 @@
 import React, { Component } from 'react';
 
+import PageHeader from './PageHeader';
 import Question from './Question';
 import ResultsSummary from './ResultsSummary';
 
 const QUESTIONS_URL = 'https://opentdb.com/api.php?encode=url3986';
-
-const PageHeader = ({ index, questions, answers, done }) => {
-  const correct = answers.filter(({ correct }) => correct).length;
-  const cname = done ? 'results__header' : 'questions__header';
-
-  return (
-    <div className={cname}>
-      {!done && (
-        <span className="questions__header__index">
-          Question {index + 1} of {questions.length}
-        </span>
-      )}
-      {index > 0 && <span className="count">{correct} correct</span>}
-    </div>
-  );
-};
 
 class QuestionsPage extends Component {
   state = {
@@ -29,7 +14,7 @@ class QuestionsPage extends Component {
     answers: []
   };
 
-  async componentWillMount() {
+  async componentDidMount() {
     const { category, difficulty, count } = this.props;
 
     const baseURL = QUESTIONS_URL + `&amount=${count}`;
@@ -38,8 +23,8 @@ class QuestionsPage extends Component {
 
     const questionsURL = baseURL + categoryStr + difficultyStr;
 
-    const raw = await fetch(questionsURL);
-    const data = await raw.json();
+    const response = await fetch(questionsURL);
+    const data = await response.json();
 
     const questions = data.results.map(this.process);
 

@@ -3,16 +3,16 @@ import React from 'react';
 const ResultQuestion = ({ correct, text, question }) => {
   const user_answer = correct ? (
     <div key="c" className="correct result__correct-true">
-      {text} ︎︎&#10003;
+      {text} ︎︎&#x2713;
     </div>
   ) : (
     <div key="w" className="result__correct-false">
-      {text}
+      {text} &#x274c;
     </div>
   );
 
   const correct_answer = !correct && (
-    <div key="wc" className="correct">
+    <div key="wc" className="correct correct-answer">
       {question.correct_answer}
     </div>
   );
