@@ -8,8 +8,13 @@
 .App-header {
   background-color: $deep-purple;
   color: $light;
-  padding: $xs-size 0;
+  padding: $xs-size;
   text-align: center;
+
+  img {
+    float: left;
+    margin-top: $xs-size;
+  }
 }
 
 .App-header__title {

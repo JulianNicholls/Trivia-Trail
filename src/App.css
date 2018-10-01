@@ -107,8 +107,8 @@ label {
 
 .results {
   align-items: center;
-  background: #f0f0f0;
-  color: #111;
+  background: #eee;
+  color: #222;
   display: grid;
   font-size: 1.6rem;
   grid-template-columns: 3fr 1fr 1fr;
@@ -141,8 +141,11 @@ label {
 .App-header {
   background-color: #4a148c;
   color: #eee;
-  padding: 0.6rem 0;
+  padding: 0.6rem;
   text-align: center; }
+  .App-header img {
+    float: left;
+    margin-top: 0.6rem; }
 
 .App-header__title {
   font-size: 3.2rem;

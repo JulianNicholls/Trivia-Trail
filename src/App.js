@@ -4,6 +4,8 @@ import './App.css';
 import QuestionsPage from './components/QuestionsPage';
 import SelectionPage from './components/SelectionPage';
 
+// import rbsLogo from '../public/images/favicon-32x32.png'
+
 class App extends Component {
   state = {
     selected: false,
@@ -37,6 +39,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <img src="favicon-32x32.png" alt="RBS logo" />
+
           <h1 className="App-header__title">Trivia Trail</h1>
         </header>
         {this.page()}
