@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 
 import QuestionsPage from './components/QuestionsPage';
@@ -6,47 +6,41 @@ import SelectionPage from './components/SelectionPage';
 
 // import rbsLogo from '../public/images/favicon-32x32.png'
 
-class App extends Component {
-  state = {
+const App = () => {
+  const [state, setState] = useState({
     selected: false,
     category: 0,
     difficulty: 'any',
     count: 10,
-  };
+  });
 
-  handleSelect = ({ category, difficulty, count }) => {
-    this.setState(() => ({
+  const handleSelect = ({ category, difficulty, count }) => {
+    setState({
       selected: true,
       category,
       difficulty,
       count,
-    }));
+    });
   };
 
-  reset = () => {
-    this.setState(() => ({ selected: false }));
-  };
+  const reset = () => setState({ ...state, selected: false });
 
-  page = () => {
-    if (this.state.selected) {
-      return <QuestionsPage {...this.state} reset={this.reset} />;
-    } else {
-      return <SelectionPage handleSelect={this.handleSelect} />;
-    }
-  };
-
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src="favicon-32x32.png" alt="RBS logo" />
-
-          <h1 className="App-header__title">Trivia Trail</h1>
-        </header>
-        {this.page()}
-      </div>
+  const page = () =>
+    state.selected ? (
+      <QuestionsPage {...state} reset={reset} />
+    ) : (
+      <SelectionPage handleSelect={handleSelect} />
     );
-  }
-}
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src="favicon-32x32.png" alt="RBS logo" />
+        <h1 className="App-header__title">Trivia Trail</h1>
+      </header>
+      {page()}
+    </div>
+  );
+};
 
 export default App;
