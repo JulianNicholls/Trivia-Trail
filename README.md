@@ -4,7 +4,7 @@ A trivia game using the resources at the [Open Trivia database](https://opentdb.
 
 ## Git client
 
-I have used Git at the command-line for 10 years.
+I have used Git at the command-line for more than 10 years.
 Over that time, I have tried many different graphical shells for Git,
 without finding one that was easier and nicer to use than the command-line
 (in my view).
