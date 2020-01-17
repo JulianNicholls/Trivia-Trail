@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import './App.scss';
 
 import QuestionsPage from './components/QuestionsPage';
 import SelectionPage from './components/SelectionPage';
 
-// import rbsLogo from '../public/images/favicon-32x32.png'
+import './App.scss';
 
 const App = () => {
   const [state, setState] = useState({
