@@ -8,12 +8,13 @@ html {
 }
 
 body {
-  background: url(styles/questions.jpg);
+  background: url(questions.jpg);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: $font-size-medium;
   line-height: 1.5;
   padding: 0;
+  margin: 0;
 }
 
 .container {

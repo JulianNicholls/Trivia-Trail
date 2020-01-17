@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 
 import QuestionsPage from './components/QuestionsPage';
 import SelectionPage from './components/SelectionPage';
@@ -11,7 +11,7 @@ class App extends Component {
     selected: false,
     category: 0,
     difficulty: 'any',
-    count: 10
+    count: 10,
   };
 
   handleSelect = ({ category, difficulty, count }) => {
@@ -19,7 +19,7 @@ class App extends Component {
       selected: true,
       category,
       difficulty,
-      count
+      count,
     }));
   };
 
