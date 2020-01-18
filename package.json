@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.1",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -15,7 +16,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "axios": "^0.19.1",
     "justify-text": "^1.1.0"
   },
   "browserslist": [
