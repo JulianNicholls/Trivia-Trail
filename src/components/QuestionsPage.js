@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import PageHeader from './PageHeader';
 import Question from './Question';
@@ -6,32 +7,15 @@ import ResultsSummary from './ResultsSummary';
 
 const QUESTIONS_URL = 'https://opentdb.com/api.php?encode=url3986';
 
-class QuestionsPage extends Component {
-  state = {
+const QuestionsPage = ({ category, difficulty, count, reset }) => {
+  const [state, setState] = useState({
     loading: true,
     questions: [],
     index: 0,
-    answers: []
-  };
+    answers: [],
+  });
 
-  async componentDidMount() {
-    const { category, difficulty, count } = this.props;
-
-    const baseURL = QUESTIONS_URL + `&amount=${count}`;
-    const categoryStr = category !== '0' ? `&category=${category}` : '';
-    const difficultyStr = difficulty !== 'any' ? `&difficulty=${difficulty}` : '';
-
-    const questionsURL = baseURL + categoryStr + difficultyStr;
-
-    const response = await fetch(questionsURL);
-    const data = await response.json();
-
-    const questions = data.results.map(this.process);
-
-    this.setState(() => ({ loading: false, questions }));
-  }
-
-  process = question => {
+  const process = question => {
     const decodeTrim = text => decodeURIComponent(text).trim();
 
     question.question = decodeTrim(question.question);
@@ -41,48 +25,59 @@ class QuestionsPage extends Component {
     return question;
   };
 
-  receiveAnswer = text => {
-    this.setState(prevState => {
-      const { questions, index, answers } = prevState;
+  useEffect(() => {
+    const loadQuestions = async () => {
+      const baseURL = `${QUESTIONS_URL}&amount=${count}`;
+      const catStr = category !== '0' ? `&category=${category}` : '';
+      const diffStr = difficulty !== 'any' ? `&difficulty=${difficulty}` : '';
+
+      const questionsURL = `${baseURL}${catStr}${diffStr}`;
+
+      const response = await axios.get(questionsURL);
+
+      const questions = response.data.results.map(process);
+
+      setState(s => ({ ...s, loading: false, questions }));
+    };
+
+    loadQuestions();
+  }, [category, count, difficulty]);
+
+  const receiveAnswer = text => {
+    setState(s => {
+      const { questions, index, answers } = s;
 
       return {
+        ...s,
         index: index + 1,
         answers: [
           ...answers,
-          { correct: text === questions[index].correct_answer, text }
-        ]
+          { correct: text === questions[index].correct_answer, text },
+        ],
       };
     });
   };
 
-  done = () => this.state.index >= this.state.questions.length;
+  const done = () => state.index >= state.questions.length;
 
-  page() {
-    const { loading, questions, index, answers } = this.state;
+  const page = () => {
+    if (state.loading) return;
 
-    if (loading) return;
+    const { questions, index, answers } = state;
 
-    if (this.done()) {
-      return (
-        <ResultsSummary
-          questions={questions}
-          answers={answers}
-          reset={this.props.reset}
-        />
-      );
-    }
-
-    return <Question {...questions[index]} sendAnswer={this.receiveAnswer} />;
-  }
-
-  render() {
-    return (
-      <div className="questions">
-        <PageHeader {...this.state} done={this.done()} />
-        <div className="container">{this.page()}</div>
-      </div>
+    return done() ? (
+      <ResultsSummary questions={questions} answers={answers} reset={reset} />
+    ) : (
+      <Question {...questions[index]} sendAnswer={receiveAnswer} />
     );
-  }
-}
+  };
+
+  return (
+    <div className="questions">
+      <PageHeader {...state} done={done()} />
+      <div className="container">{page()}</div>
+    </div>
+  );
+};
 
 export default QuestionsPage;
