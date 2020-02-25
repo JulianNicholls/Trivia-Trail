@@ -13,13 +13,25 @@ import React from 'react';
 //   ]
 // }
 
-const Answer = ({ answer, onClick }) => (
+interface AnswerProps {
+  answer: string;
+  onClick(evt: React.MouseEvent<HTMLButtonElement>): void
+};
+
+const Answer = ({ answer, onClick }: AnswerProps): JSX.Element => (
   <button className="question__answer" onClick={onClick}>
     {answer}
   </button>
 );
 
-const Question = ({ question, correct_answer, incorrect_answers, sendAnswer }) => {
+interface QuestionProps {
+  question: string;
+  correct_answer: string;
+  incorrect_answers: Array<string>;
+  sendAnswer(answer: string): void;
+};
+
+const Question = ({ question, correct_answer, incorrect_answers, sendAnswer }: QuestionProps): JSX.Element => {
   // Insert the correct answer randomly into the list of incorrect answers
   const questions = () => {
     const questions = [...incorrect_answers];
@@ -37,7 +49,7 @@ const Question = ({ question, correct_answer, incorrect_answers, sendAnswer }) =
         <Answer
           key={idx}
           answer={answer}
-          onClick={evt => sendAnswer(evt.target.innerText)}
+          onClick={(evt: React.MouseEvent<HTMLButtonElement>) => sendAnswer(evt.currentTarget.innerText)}
         />
       ))}
     </div>

@@ -3,8 +3,24 @@ import axios from 'axios';
 
 const CATEGORIES_URL = 'https://opentdb.com/api_category.php';
 
-const SelectionPage = ({ handleSelect }) => {
-  const [state, setState] = useState({
+interface Category {
+  id: number;
+  name: string;
+};
+
+interface State {
+  categories: Array<Category>;
+  category: number;
+  difficulty: string;
+  count: number;
+}
+
+interface SelectPageProps {
+  handleSelect(state: State): void
+};
+
+const SelectionPage = ({ handleSelect }: SelectPageProps) => {
+  const [state, setState] = useState<State>({
     categories: [{ id: 0, name: 'Loading...' }],
     category: 0,
     difficulty: 'any',
@@ -17,13 +33,13 @@ const SelectionPage = ({ handleSelect }) => {
       const categories = [{ id: 0, name: 'Something for Everyone' }];
 
       response.data.trivia_categories
-        .sort((cata, catb) => {
+        .sort((cata: Category, catb: Category): number => {
           if (cata.name < catb.name) return -1;
           if (cata.name > catb.name) return 1;
 
           return 0;
         })
-        .forEach(({ id, name }) => {
+        .forEach(({ id, name }: Category) => {
           categories.push({ id, name });
         });
 
@@ -33,20 +49,20 @@ const SelectionPage = ({ handleSelect }) => {
     loadCategories();
   }, []);
 
-  const handleCategory = evt => {
-    const { value: category } = evt.target;
+  const handleCategory = (evt: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value: category } = evt.currentTarget;
 
-    setState(s => ({ ...s, category }));
+    setState(s => ({ ...s, category: Number(category) }));
   };
 
-  const handleDifficulty = evt => {
-    const { value: difficulty } = evt.target;
+  const handleDifficulty = (evt: React.ChangeEvent<HTMLSelectElement>): void => {
+    const { value: difficulty } = evt.currentTarget;
 
     setState(s => ({ ...s, difficulty }));
   };
 
-  const onCountChanged = evt => {
-    let count = Number(evt.target.value);
+  const onCountChanged = (evt: React.ChangeEvent<HTMLInputElement>): void => {
+    let count = Number(evt.currentTarget.value);
 
     // if (count < 5) count = 5;
     if (count < 2) count = 2;
@@ -55,7 +71,7 @@ const SelectionPage = ({ handleSelect }) => {
     setState(s => ({ ...s, count }));
   };
 
-  const handleGo = evt => {
+  const handleGo = (evt: React.FormEvent<HTMLFormElement>): void => {
     evt.preventDefault();
 
     handleSelect(state);

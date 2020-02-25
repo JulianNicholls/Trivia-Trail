@@ -1,6 +1,13 @@
 import React from 'react';
 
-const PageHeader = ({ index, questions, answers, done }) => {
+interface PageheaderProps {
+  index: number;
+  questions: Array<string>;
+  answers: Array<Answer>;
+  done: boolean;
+};
+
+const PageHeader = ({ index, questions, answers, done }: PageheaderProps): JSX.Element => {
   const correct = answers.filter(({ correct }) => correct).length;
   const cname = done ? 'results__header' : 'questions__header';
 
