@@ -2,7 +2,7 @@ import React from 'react';
 
 interface PageheaderProps {
   index: number;
-  questions: Array<string>;
+  questions: Array<Question>;
   answers: Array<Answer>;
   done: boolean;
 };

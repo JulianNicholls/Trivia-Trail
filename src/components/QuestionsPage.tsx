@@ -7,16 +7,30 @@ import ResultsSummary from './ResultsSummary';
 
 const QUESTIONS_URL = 'https://opentdb.com/api.php?encode=url3986';
 
-const QuestionsPage = ({ category, difficulty, count, reset }) => {
-  const [state, setState] = useState({
+interface QuestionPageProps {
+  category: number;
+  difficulty: string;
+  count: number;
+  reset(): void;
+}
+interface State {
+  loading: boolean;
+  questions: Array<Question>;
+  index: number;
+  answers: Array<Answer>
+}
+
+
+const QuestionsPage = ({ category, difficulty, count, reset }: QuestionPageProps) => {
+  const [state, setState] = useState<State>({
     loading: true,
     questions: [],
     index: 0,
     answers: [],
   });
 
-  const process = question => {
-    const decodeTrim = text => decodeURIComponent(text).trim();
+  const process = (question: Question): Question => {
+    const decodeTrim = (text: string): string => decodeURIComponent(text).trim();
 
     question.question = decodeTrim(question.question);
     question.correct_answer = decodeTrim(question.correct_answer);
@@ -28,7 +42,7 @@ const QuestionsPage = ({ category, difficulty, count, reset }) => {
   useEffect(() => {
     const loadQuestions = async () => {
       const baseURL = `${QUESTIONS_URL}&amount=${count}`;
-      const catStr = category !== '0' ? `&category=${category}` : '';
+      const catStr = category !== 0 ? `&category=${category}` : '';
       const diffStr = difficulty !== 'any' ? `&difficulty=${difficulty}` : '';
 
       const questionsURL = `${baseURL}${catStr}${diffStr}`;
@@ -43,7 +57,7 @@ const QuestionsPage = ({ category, difficulty, count, reset }) => {
     loadQuestions();
   }, [category, count, difficulty]);
 
-  const receiveAnswer = text => {
+  const receiveAnswer = (text: string): void => {
     setState(s => {
       const { questions, index, answers } = s;
 
@@ -58,10 +72,10 @@ const QuestionsPage = ({ category, difficulty, count, reset }) => {
     });
   };
 
-  const done = () => state.index >= state.questions.length;
+  const done = (): boolean => state.index >= state.questions.length;
 
-  const page = () => {
-    if (state.loading) return;
+  const page = (): JSX.Element | null => {
+    if (state.loading) return null;
 
     const { questions, index, answers } = state;
 
