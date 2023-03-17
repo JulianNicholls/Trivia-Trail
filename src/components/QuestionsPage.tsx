@@ -13,6 +13,7 @@ interface QuestionPageProps {
   count: number;
   reset(): void;
 }
+
 interface State {
   loading: boolean;
   questions: Array<Question>;

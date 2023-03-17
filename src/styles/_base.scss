@@ -18,9 +18,9 @@ body {
 }
 
 .container {
-  max-width: 98%;
+  max-width: min(98%, 1100px);
   margin: 0 auto;
-  padding: 0;
+  padding: 1rem;
 
   @media (min-width: $desktop-breakpoint) {
     max-width: 90%;
